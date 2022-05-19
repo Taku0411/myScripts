@@ -75,22 +75,24 @@ flow_list = glob.glob("{}*{}{}{}".format(StrCheck[0], StrCheck[1], id, StrCheck[
 if(os.path.isdir("../output") != True):
     os.mkdir("../output")
 
-
+print("start exporting ...")
 for i in first_list:
     digit = re.findall("\d+", i)
     output = "../output/first{}.vtk".format(digit[1])
     shutil.copyfile(i, output)
-
+print("[1/3] finished first step vtk")
 
 
 for i in last_list:
     digit = re.findall("\d+", i)
     output = "../output/last{}.vtk".format(digit[1])
     shutil.copyfile(i, output)
-
+print("[2/3] finished last step vtk")
 
 
 for i in flow_list:
     digit = re.findall("\d+", i)
     output = "../output/flow{}.vtk".format(digit[0])
     shutil.copyfile(i, output)
+print("[3/3] finished flow step vtk")
+print("finish all !!")
